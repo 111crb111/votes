@@ -42,7 +42,7 @@ App.Router = Backbone.Router.extend({
 			view = new App.Views.SingleVote({ 'model': model });
 			view.render();
 		}
-		else{ // if model not exist fetch ddata from server
+		else{ // if model not exist fetch data from server
 			model['hasVariants'] = true;
 			App.utils.spinner.show();
 			$.ajax({

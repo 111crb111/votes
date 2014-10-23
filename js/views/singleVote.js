@@ -85,7 +85,6 @@ App.Views.SingleVote = Backbone.View.extend({
 			App.utils.messages.showMessage('#messagesArea_fixed', infoMsg);
 			return;
 		}
-			console.log(this.checked_variants);
 		App.utils.spinner.show();
 		$.ajax({
 			type: 'post',
@@ -106,13 +105,20 @@ App.Views.SingleVote = Backbone.View.extend({
 							_that.model.attributes.variants = data;
 							_that.model.attributes.is_voted = true;
 							_that.render();
+						},
+						error: function(xhr, ajaxOptions, thrownError){
+							errorMsg = '<div class="alert alert-danger" role="alert">xhr - '+xhr+', thrownError - '+thrownError+'</div>';
+							App.utils.messages.showMessage('#messagesArea_fixed', errorMsg);	
+						},
+						complete: function(){
 							//remove spinner
 							App.utils.spinner.hide();
 						}
 					});
 				}
 			},
-			error: function(data){
+			error: function(xhr, ajaxOptions, thrownError){
+				errorMsg = '<div class="alert alert-danger" role="alert">xhr - '+xhr+', thrownError - '+thrownError+'</div>';
 				App.utils.messages.showMessage('#messagesArea_fixed', errorMsg);	
 			},
 			complete: function(){
