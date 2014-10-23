@@ -1,5 +1,4 @@
 <?php 
-echo "included ROUTER.php";
 	define('VOTES_tbl', 'votes'); 
 	define('VARIANTS_tbl', 'votes_variants'); 
 	define('DB_HOST', 'mysql.hostinger.com.ua');
@@ -8,9 +7,8 @@ echo "included ROUTER.php";
 	define('DB_NAME', 'u990181625_votes');
 	
 	include 'AltoRouter.php';
-echo "included AltoRouter.php";
 	$router = new AltoRouter();
-	$router->setBasePath('/progportfolio.esy.es');
+	//$router->setBasePath('/progportfolio.esy.es');
 	/* Setup the URL routing. This is production ready. */
 	 
 	// Main routes that non-customers see
