@@ -9,13 +9,10 @@ App.Router = Backbone.Router.extend({
 
 	},
 	index: function(){
-		console.log('index');
 		var template = _.template($('#home_tpl').html());
 		$('.page').html(template);
 	},
 	createvote: function(){
-		console.log('addvote_ROUTE');
-
 		if(App.Views.createvote){ 
 			App.Views.createvote.remove();
 		}
@@ -27,18 +24,14 @@ App.Router = Backbone.Router.extend({
 
 	},
 	votes: function(){	
-		console.log('votes_ROUTE');
 		App.Views.votes.render();
-		//console.log(App.Views.votes.render);
 	},
 	singleVote: function(vote_id){
-		console.log('vote_id = ' + vote_id);
 		var routeHash = Backbone.history.getHash(),
 			model = App.Collections.votes.get(vote_id), //singleVote model
 			view; //singleVote view
 		
 		if(model['hasVariants'] == true){ // if model exist dont need ajax
-			console.log('DONT NEED AJAX')
 			view = new App.Views.SingleVote({ 'model': model });
 			view.render();
 		}
@@ -67,7 +60,6 @@ App.Router = Backbone.Router.extend({
 					}
 				},
 				error: function(){
-					console.log('ERRRORRRR on loading model with id = ' + vote_id);
 				},
 				complete: function(){
 					App.utils.spinner.hide();

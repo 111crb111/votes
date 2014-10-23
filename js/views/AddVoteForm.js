@@ -12,7 +12,6 @@ App.Views.addVoteForm = Backbone.View.extend({
 	},
 
 	add_vote: function(e){
-		console.log('start func');
 		e.preventDefault();
 		var variants = new Array();
 
@@ -25,7 +24,6 @@ App.Views.addVoteForm = Backbone.View.extend({
 			question: this.$('#question').val(),
 			variants: variants
 		});
-		console.log(added_collection);
 	},
 	toggleDelBtn: function(){
 			var remove_icons = $('.remove_variant');

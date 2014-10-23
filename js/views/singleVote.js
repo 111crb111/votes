@@ -4,7 +4,6 @@ App.Views.SingleVote = Backbone.View.extend({
 	tagName: 'div#single_vote_wrapper',
 	checked_variants: [],
 	initialize: function(){
-		console.log(this);
 		this.model.attributes.is_voted = false;
 	},
 	render: function(){
@@ -124,6 +123,5 @@ App.Views.SingleVote = Backbone.View.extend({
 			complete: function(){
 			}
 		});
-			console.log(this.checked_variants);
 	}
 });

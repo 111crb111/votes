@@ -2,7 +2,6 @@ App.Views.Createvote = Backbone.View.extend({
 	el: '#create_vote_form',
 
 	initialize: function(){
-		console.log('CreatevoteVIEW INITIALIZED..')
 		this.add_variant();
 		this.add_variant();
 	},
@@ -15,7 +14,6 @@ App.Views.Createvote = Backbone.View.extend({
 		//not using
 	},
 	create_vote: function(e){
-		console.log('createvote');
 		e.preventDefault();
 
 		if( ! this.validateForm()){
@@ -39,7 +37,6 @@ App.Views.Createvote = Backbone.View.extend({
 					'text': text,
 					'color': color
 				}
-			console.log(temp_obj)
 			variants.push(temp_obj);
 		});
 
@@ -83,7 +80,6 @@ App.Views.Createvote = Backbone.View.extend({
 		$('.variant').each(function(){
 			if( ! $(this).val() ){
 				isValid = false
-				console.log($(this).val());
 			}
 		});
 
@@ -95,8 +91,6 @@ App.Views.Createvote = Backbone.View.extend({
 		if(isValid){
 			return true
 		} else{
-				console.log(name);
-				console.log(question);
 			return false
 		}
 

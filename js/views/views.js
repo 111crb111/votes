@@ -39,7 +39,6 @@ App.Views.Votes = Backbone.View.extend({
 		return this;
 	},
 	addOne: function(vote){
-	//	console.log(this.collection);
 		var singleVote = new App.Views.Vote({ model: vote });
 		this.$el.append( singleVote.render().el );
 	},
@@ -48,7 +47,6 @@ App.Views.Votes = Backbone.View.extend({
 			return;
 		}
 		this.ajax_running = true;
-		console.log('load');
 		var _votes_table = this;
 		var last_id = this.collection.last().id; // last model id
 		var limit = App.ajax_limit_votes; // how much items load
@@ -71,7 +69,6 @@ App.Views.Votes = Backbone.View.extend({
 					})
 			},
 			complete: function(){
-				console.log('complete');
 				_votes_table.ajax_running = false;
 			}
 		});
@@ -81,7 +78,6 @@ App.Views.Votes = Backbone.View.extend({
 
 	chekScroll: function(){
 		var votes_table = $('#votes_page');
-		console.log(votes_table[0].scrollHeight - votes_table.height() - votes_table.scrollTop());
 		if(votes_table[0].scrollHeight - votes_table.height() - votes_table.scrollTop() <= 0){
 			this.load();
 		}
@@ -121,7 +117,6 @@ App.Views.addVote = Backbone.View.extend({
 	},
 
 	add_vote: function(e){
-		console.log('start func');
 		e.preventDefault();
 		var variants = new Array();
 
@@ -134,7 +129,6 @@ App.Views.addVote = Backbone.View.extend({
 			question: this.$('#question').val(),
 			variants: variants
 		});
-		console.log(added_collection);
 	},
 	toggleDelBtn: function(){
 			var remove_icons = $('.remove_variant');
@@ -158,38 +152,3 @@ App.Views.addVote = Backbone.View.extend({
 		this.toggleDelBtn();
 	},
 });
-/*
-,
-	render: function(){
-		var template = _.template($('#votes-template').html(), {votes: this.collection.models});
-		this.$el.html(template);
-	},
-
-
-	
-		<script src="text/template" id="votes-template">
-				<div class="page-header">
-					<h1>Голосования</h1>
-				</div>
-				<table id="votes_table" class="table-striped">
-					<thead>
-						<tr>
-							<th>id</th>
-							<!-- <th>Название</th> -->
-							<th>Вопрос</th>
-							<th>кнопка</th>
-						</tr>
-					</thead>
-					<tbody>
-						<% _.each(votes, function(vote) { %>			
-							<tr>
-								<td><%= vote.get('id') %></td>
-								<!-- <td><%= vote.get('name') %></td> -->
-								<td><%= vote.get('question') %></td>
-								<td><a href="#" role="button" class="btn">Открыть</a></td>
-							</tr>
-						<% }) %>
-					</tbody>
-				</table>
-		</script>
-*/
