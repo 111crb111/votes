@@ -114,8 +114,8 @@ App.Views.Createvote = Backbone.View.extend({
 	},
 	
 	add_variant: function(){
-		var variant_counter = $('.variant').length + 1,
-			variant_template = '\n<div class="input-append"><input type="text" class="variant colorPicker" placeholder="Вариант ' + variant_counter + '" required><div class="btn hide remove_variant"><span class="icon-remove-sign"></span></div></div>';
+		var variant_counter = $('.variant').length + 1, // +1 because add 1
+			variant_template = '\n<div class="input-append"><input type="text" class="variant colorPicker" placeholder="Вариант ответа" required><div class="btn hide remove_variant"><span class="icon-remove-sign"></span></div></div>';
 
 		$('#variants').append(variant_template);
 		current_variant = $('.variant').last()[0];
@@ -146,12 +146,14 @@ App.Views.Createvote = Backbone.View.extend({
 
 	},
 	remove_variant: function(e){
-		console.log(e.target);
+		var variant_counter = $('.variant').length - 1; // -1 because remove
+
 		if(e.target.className == 'icon-remove-sign'){
 			e.target.parentNode.parentNode.remove();
 		}else{
 			e.target.parentNode.remove();
 		}
 		this.toggleDelBtn();
+		this.update_options(variant_counter);
 	},
 });
