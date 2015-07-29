@@ -14,4 +14,5 @@ This is application for my CV, it's provide minimal functionality, create votes,
     </ul>
   </li>
   <li>PHP</li>
+  <li>MySQL</li>
 </ul>
