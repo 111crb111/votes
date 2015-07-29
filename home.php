@@ -33,10 +33,10 @@ echo "included home.php";
 					<a class="brand" href="#">Votes</a>
 					<ul class="nav">
 						<li>
-							<a href="#votes">Голосования</a>
+							<a href="#votes">View votes</a>
 						</li>
 						<li>
-							<a href="#createvote">Создать голосование</a>
+							<a href="#createvote">Create vote</a>
 						</li>
 					</ul>
 				</div>
@@ -77,25 +77,25 @@ echo "included home.php";
 		<script src="js/router.js"></script>		
 
 		<script type="text/template" id="home_tpl">
-				<h1>Добро пожаловать на сайт голосований!</h1>
-				<p class="hero-unit">Меня зовут Субота Ярослав Владимирович. Я сделал этот сайт для своего портфолио. Сервис голосований имеет самый минимальный функционал: <a href="#createvote">создание</a> голосований и <a href="#votes">просмотр</a> уже созданных.</p>
+				<h1>Welcome to the votes application</h1>
+				<p class="hero-unit">My name is Yaroslav Subota. I created this application for my CV, it's provide minimal functionality, <a href="#createvote">create votes</a>, <a href="#votes">view them</a> and make vote</p>
 		</script>		
 		<script type="text/template" id="votes_tr_tpl">
 			<td><%= id %></td>
 			<td><%= name %></td>
 			<td><%= question %></td>
-			<td><a href="#votes/<%= id %>" role="button" class="btn">Открыть</a></td>
+			<td><a href="#votes/<%= id %>" role="button" class="btn">Open</a></td>
 		</script>
 		<script type="text/template" id="votes_page_tpl">
 				<div class="page-header">
-					<h1>Голосования</h1>
+					<h1>Votes</h1>
 				</div>
 				<table id="votes_table" class="table table-striped">
 					<thead>
 						<tr>
 							<th>#</th>
-							<th>Название</th>
-							<th>Вопрос</th>
+							<th>Title</th>
+							<th>Question</th>
 						</tr>
 					</thead>
 					<%= tbody %>
@@ -129,7 +129,7 @@ echo "included home.php";
 							<% } %>
 						</table>
 						<% if(!is_voted){ %>
-							<input type="button" id="send_vote_<%= id %>" value="Голосовать" class="btn btn-primary btn-large" />
+							<input type="button" id="send_vote_<%= id %>" value="Make vote" class="btn btn-primary btn-large" />
 						<% } %>
 						
 					</div>
@@ -141,24 +141,24 @@ echo "included home.php";
 			</div>
 		</script>
 		<script type="text/template" id="createvote_page_tpl">
-				<h1>Создать голосование</h1>
+				<h1>Create vote</h1>
 				<form id="create_vote_form" class="form-vertical">
 					<div>
-						<input type="text" id="name" placeholder="Название" required>
+						<input type="text" id="name" placeholder="Title" required>
 					</div>
 					<div>
-						<input type="text" id="question" placeholder="Вопрос" required>
+						<input type="text" id="question" placeholder="Question" required>
 					</div>
 					<div>
-						<span>Доступно вариантов</span>
+						<span>How much user can pick</span>
 						<select id="allowed_votes">
 						</select> 
 					</div>
-					<a id="add_variant" class="btn">Добавить вариант</a><br>
+					<a id="add_variant" class="btn">Add variant</a><br>
 					<div id="variants">
 
 					</div>
-					<input type="submit" class="btn btn-primary btn-large" value="Добавить голосование">
+					<input type="submit" class="btn btn-primary btn-large" value="Save vote">
 				</form>
 		</script>
 	</body>
